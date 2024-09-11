@@ -1,4 +1,6 @@
-﻿string firstName;
+﻿Console.Clear();
+
+string firstName;
 firstName = "Bob";
 Console.WriteLine(firstName);
 firstName = "Liem";
@@ -19,3 +21,4 @@ Console.Write( messages);
 Console.Write(" messages in your inbox. The temperature is ");
 Console.Write(temperature);
 Console.Write(" celsius. ");
+
