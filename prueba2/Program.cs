@@ -1,6 +1,4 @@
-﻿Console.Clear();
-
-string firstName;
+﻿string firstName;
 firstName = "Bob";
 Console.WriteLine(firstName);
 firstName = "Liem";
