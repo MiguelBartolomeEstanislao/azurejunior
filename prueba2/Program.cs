@@ -1,24 +1,52 @@
-/*
-97 - 100   A+
-93 - 96    A
-90 - 92    A-
-87 - 89    B+
-83 - 86    B
-80 - 82    B-
-77 - 79    C+
-73 - 76    C
-70 - 72    C-
-67 - 69    D+
-63 - 66    D
-60 - 62    D-
-0  - 59    F
-*/
+using System;
 
-/*Student         Grade
+Console.Clear();
 
-Sophia:         92.2    A-
-Andrew:         89.6    B+
-Emma:           85.6    B
-Logan:          91.2    A-
-/****************************************************************************/
+// Crear un array de nombres
+string[] alumnos = ["Sophia", "Andrew", "Emma", "Logan"];
+
+// Crear un array de arrays de enteros
+//Inicializar directamente
+int[][] notas =
+[
+    [90, 86, 87, 98, 100],
+    [92, 89, 81, 96, 90],
+    [90, 85, 87, 98, 68],
+    [90, 95, 87, 88, 96],
+];
+
+var indiceDeAlumno = 0;
+decimal sumaDeValores = 0;
+// Mostrar los nombres y sus valores asociados
+foreach (var alumno in alumnos)
+{
+    sumaDeValores = notas[indiceDeAlumno].Sum();
+
+    var media = sumaDeValores / (notas.Length);
+    indiceDeAlumno++;
+    sumaDeValores = 0;
+
+
+    var notaEnLetra = "F";
+    if (media <= 59) { notaEnLetra = "F"; }
+    else if (media <= 62) { notaEnLetra = "D-"; }
+    else if (media <= 66) { notaEnLetra = "D"; }
+    else if (media <= 69) { notaEnLetra = "D+"; }
+    else if (media <= 72) { notaEnLetra = "C-"; }
+    else if (media <= 76) { notaEnLetra = "C"; }
+    else if (media <= 79) { notaEnLetra = "C+"; }
+    else if (media <= 82) { notaEnLetra = "B-"; }
+    else if (media <= 86) { notaEnLetra = "B"; }
+    else if (media <= 89) { notaEnLetra = "B+"; }
+    else if (media <= 92) { notaEnLetra = "A-"; }
+    else if (media <= 96) { notaEnLetra = "A"; }
+    else if (media <= 100) { notaEnLetra = "A+"; }
+    else { notaEnLetra = "Out Range"; }
+
+    Console.WriteLine($"Nombre: {alumno} \t Valores: {media} \t {notaEnLetra}");
+
+}
+
+Console.WriteLine("Press the Enter key to continue");
+Console.ReadLine();
 
