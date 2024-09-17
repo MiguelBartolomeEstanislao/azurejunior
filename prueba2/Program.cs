@@ -1,57 +1,31 @@
-// SKU = Stock Keeping Unit. 
-// SKU value format: <product #>-<2-letter color code>-<size code>
-string sku = "01-MN-L";
 
-string[] product = sku.Split('-');
 
-string type = "";
-string color = "";
-string size = "";
+string permission = "Admin|Manager";
+int level = 15;
 
-switch (product[0])
+if (permission.Contains("Admin"))
 {
-    case "01":
-        type = "Sweat Shirt";
-        break;
-    case "02":
-        type = "T-Shirt";
-        break;
-    case "03":
-        type = "Sweat pants";
-        break;
-    default:
-        type = "Other";
-        break;
+    if (level > 55)
+    {
+        Console.WriteLine("Welcome, Super Admin user.");
+    }
+    else
+    {
+        Console.WriteLine("Welcome, Admin user.");
+    }
 }
-
-// Switch para el color
-switch (product[1])
+else if (permission.Contains("Manager"))
 {
-    case "BL":
-        color = "Black";
-        break;
-    case "MN":
-        color = "Maroon";
-        break;
-    default:
-        color = "White";
-        break;
+    if (level >= 20)
+    {
+        Console.WriteLine("Contact an Admin for access.");
+    }
+    else
+    {
+        Console.WriteLine("You do not have sufficient privileges.");
+    }
 }
-
-// Switch para el tamaño
-switch (product[2])
+else
 {
-    case "S":
-        size = "Small";
-        break;
-    case "M":
-        size = "Medium";
-        break;
-    case "L":
-        size = "Large";
-        break;
-    default:
-        size = "One Size Fits All";
-        break;
+    Console.WriteLine("You do not have sufficient privileges.");
 }
-        Console.WriteLine($"Product: {size} {color} {type}");
