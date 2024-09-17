@@ -1,52 +1,51 @@
-using System;
+// SKU = Stock Keeping Unit. 
+// SKU value format: <product #>-<2-letter color code>-<size code>
+string sku = "01-MN-L";
 
-Console.Clear();
+string[] product = sku.Split('-');
 
-// Crear un array de nombres
-string[] alumnos = ["Sophia", "Andrew", "Emma", "Logan"];
+string type = "";
+string color = "";
+string size = "";
 
-// Crear un array de arrays de enteros
-//Inicializar directamente
-int[][] notas =
-[
-    [90, 86, 87, 98, 100],
-    [92, 89, 81, 96, 90],
-    [90, 85, 87, 98, 68],
-    [90, 95, 87, 88, 96],
-];
-
-var indiceDeAlumno = 0;
-decimal sumaDeValores = 0;
-// Mostrar los nombres y sus valores asociados
-foreach (var alumno in alumnos)
+if (product[0] == "01")
 {
-    sumaDeValores = notas[indiceDeAlumno].Sum();
-
-    var media = sumaDeValores / (notas.Length);
-    indiceDeAlumno++;
-    sumaDeValores = 0;
-
-
-    var notaEnLetra = "F";
-    if (media <= 59) { notaEnLetra = "F"; }
-    else if (media <= 62) { notaEnLetra = "D-"; }
-    else if (media <= 66) { notaEnLetra = "D"; }
-    else if (media <= 69) { notaEnLetra = "D+"; }
-    else if (media <= 72) { notaEnLetra = "C-"; }
-    else if (media <= 76) { notaEnLetra = "C"; }
-    else if (media <= 79) { notaEnLetra = "C+"; }
-    else if (media <= 82) { notaEnLetra = "B-"; }
-    else if (media <= 86) { notaEnLetra = "B"; }
-    else if (media <= 89) { notaEnLetra = "B+"; }
-    else if (media <= 92) { notaEnLetra = "A-"; }
-    else if (media <= 96) { notaEnLetra = "A"; }
-    else if (media <= 100) { notaEnLetra = "A+"; }
-    else { notaEnLetra = "Out Range"; }
-
-    Console.WriteLine($"Nombre: {alumno} \t Valores: {media} \t {notaEnLetra}");
-
+    type = "Sweat shirt";
+} else if (product[0] == "02")
+{
+    type = "T-Shirt";
+} else if (product[0] == "03")
+{
+    type = "Sweat pants";
+}
+else
+{
+    type = "Other";
 }
 
-Console.WriteLine("Press the Enter key to continue");
-Console.ReadLine();
+if (product[1] == "BL")
+{
+    color = "Black";
+} else if (product[1] == "MN")
+{
+    color = "Maroon";
+} else
+{
+    color = "White";
+}
 
+if (product[2] == "S")
+{
+    size = "Small";
+} else if (product[2] == "M")
+{
+    size = "Medium";
+} else if (product[2] == "L")
+{
+    size = "Large";
+} else
+{
+    size = "One Size Fits All";
+}
+
+Console.WriteLine($"Product: {size} {color} {type}");
