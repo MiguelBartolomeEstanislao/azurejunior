@@ -1,38 +1,36 @@
-/* 1
-2
-3 - Fizz
-4
-5 - Buzz
-6 - Fizz
-7
-8
-9 - Fizz
-10 - Buzz
-11
-12 - Fizz
-13
-14
-15 - FizzBuzz
-16
-17
-18 - Fizz
-19
-20 - Buzz
-21 - Fizz
-22
-.
-.
-.
-*/
+// Inicializar la salud del héroe y el monstruo
+        int heroHealth = 10;
+        int monsterHealth = 10;
+        Random random = new Random();
 
-for (int i = 1; i < 101; i++) 
-{
-    if ((i % 3 == 0) && (i % 5 == 0))
-    Console.WriteLine($"{i} - FizzBuzz");
-    else if (i % 3 == 0)
-    Console.WriteLine($"{i} - Fizz");
-    else if ((i % 5 == 0)) 
-    Console.WriteLine($"{i} - Buzz");
-    else
-    Console.WriteLine($"{i}");
-}
+        // Bucle del juego
+        do
+        {
+            // El héroe ataca primero
+            int heroAttack = random.Next(1, 11); // Valor aleatorio entre 1 y 10
+            monsterHealth -= heroAttack; // Reducir la salud del monstruo
+            Console.WriteLine($"Monster was damaged and lost {heroAttack} health and now has {monsterHealth} health.");
+
+            // Comprobar si el monstruo ha sido derrotado
+            if (monsterHealth <= 0)
+            {
+                Console.WriteLine("Hero wins!");
+                break;
+            }
+
+            // El monstruo ataca si sigue vivo
+            int monsterAttack = random.Next(1, 11); // Valor aleatorio entre 1 y 10
+            heroHealth -= monsterAttack; // Reducir la salud del héroe
+            Console.WriteLine($"Hero was damaged and lost {monsterAttack} health and now has {heroHealth} health.");
+
+            // Comprobar si el héroe ha sido derrotado
+            if (heroHealth <= 0)
+            {
+                Console.WriteLine("Monster wins!");
+                break;
+            }
+
+        } while (heroHealth > 0 && monsterHealth > 0); // Continuar mientras ambos tengan salud
+
+        Console.ReadLine(); // Para evitar que la consola se cierre inmediatamente
+    
