@@ -1,35 +1,54 @@
-string customerName = "Ms. Barros";
-string currentProduct = "Magic Yield";
+using System;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 
-int currentShares = 2975000;
-string currentSharesFormatted = currentShares.ToString("N0");
+namespace prueba;
 
+public class Katas
+{
 
-decimal currentReturn = 0.1275m;
-decimal currentReturnFormatted = currentReturn * 100;
-string currentReturnFormattedString = currentReturnFormatted.ToString("F2");
+    public bool EsPrimoRecursivo(int numero, int divisor)
+    {
+        if (divisor > Math.Sqrt(numero)) return true; // Si el divisor supera la raíz cuadrada, es primo
+        if (numero % divisor == 0) return false; // Si es divisible por el divisor, no es primo
 
-decimal currentProfit = 55000000.0m;
-string newProduct = "Glorious Future";
+        // Llamada recursiva con el siguiente divisor impar
+        return EsPrimoRecursivo(numero, divisor + 2);
+    }
 
-decimal newReturn = 0.13125m;
-decimal newReturnFormatted = newReturn * 100;
-string newReturnFormattedString = currentReturnFormatted.ToString("F2");
+    public bool EsPrimo(int numero)
+    {
+        if (numero <= 1) return false; // Números menores o iguales a 1 no son primos
+        if (numero == 2) return true; // 2 es primo
+        if (numero % 2 == 0) return false; // Números pares mayores que 2 no son primos
 
-decimal newProfit = 63000000.0m;
-string formattedProfit = newProfit.ToString("C2");
+        // Llamada recursiva
+        return EsPrimoRecursivo(numero, 3);
+    }
 
-Console.Clear();
+    public string JuegoMultiplos(int pNumero){
 
-string saludo = ($"Dear {customerName},");
-Console.WriteLine(saludo);
-Console.WriteLine($"As a customer of our {currentProduct} offering we are excited to tell you about a new financial product that would dramatically increase your return. \n");
-Console.WriteLine($"Currently, you own {currentSharesFormatted} shares at a return of {currentReturnFormattedString}% \n");
-Console.WriteLine($"Our new product, {newProduct} offers a return of {newReturnFormattedString}.  Given your current volume, your potential profit would be {formattedProfit}. \n");
-Console.WriteLine("Here's a quick comparison:\n");
-Console.WriteLine($"{currentProduct, -20} {currentReturn:P2} {currentProfit,20:C2}");
-Console.WriteLine($"{newProduct, -20} {newReturn:P2} {newProfit,20:C2}");
+        string result = "";
+        if (pNumero % 3 == 0){
+            result += "Fizz";
+        }//End if
+        if (pNumero % 5 == 0){
+            result += "Buzz";
+        }//End if
+        if (pNumero % 7 == 0){
+            result += "Tazz";
+        }//End if
+        if (EsPrimo(pNumero)){
+            result += "Primo";
+        }
+        return result.Length > 0? result : pNumero.ToString();
+        /* Otra solucion 
+        var result = (pNumero % 3 == 0 ? "Fizz" : "") + (pNumero % 5 == 0 ? "Buzz" : "") + (pNumero % 7 == 0 ? "Tazz" : "") ;
+        return string.IsNullOrEmpty(result) ? pNumero.ToString() : result;
+         */
+    }//End JuegoMultiplos
 
+}//End Katas
 
 
 
